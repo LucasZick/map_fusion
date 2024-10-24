@@ -123,14 +123,15 @@ def extract_patch(map, patch_size):
     patch = rotated_map[x:x+patch_size[0], y:y+patch_size[1]]
     return patch
 
-def save_patch(patch, index):
-    cv2.imwrite(f'maps/map{index}.png', patch * 255)
+def save_patch(patch, name):
+    cv2.imwrite(f'maps/{name}.png', patch * 255)
 
 def extract_and_save_patches(map):
-    patch1 = extract_patch(map, patch_size = (random.randint(200,400), random.randint(200,400)))
-    patch2 = extract_patch(map, patch_size = (random.randint(200,400), random.randint(200,400)))
-    save_patch(patch1, 1)
-    save_patch(patch2, 2)
+    patch1 = extract_patch(map, patch_size = (random.randint(250,400), random.randint(250,400)))
+    patch2 = extract_patch(map, patch_size = (random.randint(250,400), random.randint(250,400)))
+    save_patch(patch1, 'map1')
+    save_patch(patch2, 'map2')
+    save_patch(map,'fullmap')
     plot_maps(map, patch1, patch2)
 
 def plot_maps(fullmap, patch1, patch2):
